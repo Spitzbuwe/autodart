@@ -5,8 +5,8 @@ a = Analysis(
     ['autodarts_launcher.py'],
     pathex=[],
     binaries=[],
-    datas=[('app.py', '.')],
-    hiddenimports=['streamlit', 'pandas', 'plotly', 'matplotlib', 'pygame'],
+    datas=[('app.py', '.'), ('autodarts_modules', 'autodarts_modules'), ('resources', 'resources')],
+    hiddenimports=['streamlit', 'pandas', 'plotly', 'matplotlib', 'pygame', 'PIL'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -35,4 +35,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    icon=['generated-icon.png'],
 )

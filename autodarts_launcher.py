@@ -9,7 +9,7 @@ import threading
 def open_browser():
     # Warte 3 Sekunden, um sicherzustellen, dass der Server gestartet ist
     time.sleep(3)
-    # Browser Ã¶ffnen
+    # Browser öffnen
     webbrowser.open('http://localhost:5000')
 
 def start_streamlit():
@@ -20,7 +20,7 @@ def start_streamlit():
                       "--server.address", "localhost"])
     except Exception as e:
         print(f"Fehler beim Starten des Streamlit-Servers: {e}")
-        input("DrÃ¼cken Sie eine Taste zum Beenden...")
+        input("Drücken Sie eine Taste zum Beenden...")
 
 if __name__ == "__main__":
     # Stelle sicher, dass wir im richtigen Verzeichnis sind
