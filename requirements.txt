@@ -13,3 +13,5 @@ pygame
 pygame
 openpyxl
 pandas
+openpyxl
+pandas

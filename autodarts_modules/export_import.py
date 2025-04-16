@@ -22,7 +22,7 @@ def create_export_import_interface():
             data = export_data()
             
             if data:
-                df = pd.DataFrame(data, columns=["Spieler", "Score", "Betrag", "Match ID", "Zeitstempel"])
+                df = pd.DataFrame(data)
                 
                 if export_format == "JSON":
                     export_data = df.to_json(orient="records", date_format="iso")
@@ -41,17 +41,14 @@ def create_export_import_interface():
                         "text/csv"
                     )
                 else:  # Excel
-                    output = pd.ExcelWriter(f"strafen_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx")
-                    df.to_excel(output, index=False)
-                    output.close()
-                    
-                    with open(output.path, "rb") as f:
-                        st.download_button(
-                            "Excel herunterladen",
-                            f,
-                            f"strafen_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
-                            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-                        )
+                    buffer = pd.ExcelWriter(f"strafen_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx")
+                    df.to_excel(buffer, index=False)
+                    st.download_button(
+                        "Excel herunterladen",
+                        buffer,
+                        f"strafen_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.xlsx",
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                    )
     
     with col2:
         st.subheader("Import")
@@ -60,14 +57,14 @@ def create_export_import_interface():
         if uploaded_file is not None:
             try:
                 if uploaded_file.type == "application/json":
-                    data = pd.read_json(uploaded_file).values.tolist()
+                    data = pd.read_json(uploaded_file)
                 elif uploaded_file.type == "text/csv":
-                    data = pd.read_csv(uploaded_file).values.tolist()
+                    data = pd.read_csv(uploaded_file)
                 else:  # Excel
-                    data = pd.read_excel(uploaded_file).values.tolist()
+                    data = pd.read_excel(uploaded_file)
                 
                 if st.button("Daten importieren"):
-                    if import_data(data):
+                    if import_data(data.values.tolist()):
                         st.success("Daten erfolgreich importiert!")
                     else:
                         st.error("Fehler beim Importieren der Daten")
