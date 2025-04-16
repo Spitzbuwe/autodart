@@ -5,7 +5,7 @@ run = "streamlit run app.py"
 channel = "stable-24_05"
 
 [deployment]
-run = ["sh", "-c", "streamlit run app.py --server.address 0.0.0.0 --server.headless true --server.enableCORS=false"]
+run = ["sh", "-c", "streamlit run app.py --server.address 0.0.0.0 --server.enableCORS=false --server.headless true"]
 
 [workflows]
 runButton = "Run"
@@ -17,7 +17,7 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "streamlit run app.py --server.address 0.0.0.0 --server.headless true --server.enableCORS=false"
+args = "streamlit run app.py --server.port 5000 --server.address 0.0.0.0 --server.headless true --server.enableCORS=false"
 
 [[ports]]
 localPort = 8501
