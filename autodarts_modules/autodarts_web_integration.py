@@ -24,15 +24,18 @@ class AutodartsAPI:
         """Check for 26 and 180 throws"""
         special_throws = []
         try:
-            if "ad-ext-turn-points" in str(previous_data):
-                points = str(previous_data).split('ad-ext-turn-points')[1].split('>')[1].split('<')[0]
-                player = str(previous_data).split('css-0">')[1].split('<')[0]
-                
-                if points in ['26', '180']:
-                    special_throws.append({
-                        "player": player,
-                        "score": int(points)
-                    })
-        except Exception:
-            pass
+            data_str = str(previous_data)
+            if "ad-ext-turn-points" in data_str and "css-1lvci65" in data_str:
+                points = data_str.split('css-1lvci65">')[1].split('<')[0]
+                # Extrahiere den Spielernamen aus dem HTML
+                player_parts = data_str.split('css-0">')
+                if len(player_parts) > 1:
+                    player = player_parts[1].split('<')[0]
+                    if points in ['26', '180']:
+                        special_throws.append({
+                            "player": player,
+                            "score": int(points)
+                        })
+        except Exception as e:
+            print(f"Fehler bei der Wurferkennung: {str(e)}")
         return special_throws
