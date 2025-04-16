@@ -11,3 +11,5 @@ beautifulsoup4
 pygame
 pygame
 pygame
+openpyxl
+pandas
