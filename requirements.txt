@@ -8,3 +8,6 @@ requests
 pyinstaller
 trafilatura
 beautifulsoup4
+pygame
+pygame
+pygame
