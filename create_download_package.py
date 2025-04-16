@@ -4,33 +4,45 @@ import zipfile
 import shutil
 
 def create_download_package():
-    # Erstelle temporären Ordner für das Paket
-    if not os.path.exists("dist"):
-        os.makedirs("dist")
-    
-    # Erstelle ZIP-Datei
-    zip_path = "dist/AutodartsStrafenMonitor.zip"
-    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-        # Füge Hauptdateien hinzu
-        files_to_add = ["app.py", "autodarts_launcher.py", "requirements.txt"]
-        for file in files_to_add:
-            if os.path.exists(file):
-                zf.write(file)
+    try:
+        # Erstelle dist Ordner falls nicht vorhanden
+        if not os.path.exists("dist"):
+            os.makedirs("dist")
         
-        # Füge autodarts_modules hinzu
-        for root, dirs, files in os.walk("autodarts_modules"):
-            for file in files:
-                file_path = os.path.join(root, file)
-                zf.write(file_path)
+        # Definiere Zip-Pfad
+        zip_path = "dist/AutodartsStrafenMonitor.zip"
         
-        # Füge data und resources Ordner hinzu
-        for folder in ["data", "resources"]:
-            if os.path.exists(folder):
-                for root, dirs, files in os.walk(folder):
-                    for file in files:
-                        file_path = os.path.join(root, file)
-                        zf.write(file_path)
+        # Lösche alte ZIP falls vorhanden
+        if os.path.exists(zip_path):
+            os.remove(zip_path)
+        
+        # Erstelle neue ZIP-Datei
+        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
+            # Hauptdateien
+            main_files = ["app.py", "autodarts_launcher.py", "requirements.txt"]
+            for file in main_files:
+                if os.path.exists(file):
+                    zf.write(file, file)
+            
+            # Module
+            for root, _, files in os.walk("autodarts_modules"):
+                for file in files:
+                    file_path = os.path.join(root, file)
+                    zf.write(file_path, file_path)
+            
+            # Daten und Ressourcen
+            for folder in ["data", "resources"]:
+                if os.path.exists(folder):
+                    for root, _, files in os.walk(folder):
+                        for file in files:
+                            file_path = os.path.join(root, file)
+                            zf.write(file_path, file_path)
+        
+        print(f"ZIP-Datei erfolgreich erstellt: {zip_path}")
+        return True
+    except Exception as e:
+        print(f"Fehler beim Erstellen der ZIP-Datei: {str(e)}")
+        return False
 
 if __name__ == "__main__":
     create_download_package()
-    print("Download-Paket erstellt: dist/AutodartsStrafenMonitor.zip")
