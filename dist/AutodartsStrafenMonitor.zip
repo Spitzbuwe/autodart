@@ -1,0 +1,9 @@
+
+{
+    "files": [
+        "AutodartsStrafenMonitor.exe",
+        "Autodarts-Starten.bat",
+        "data/",
+        "resources/"
+    ]
+}
