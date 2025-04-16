@@ -1,4 +1,3 @@
-
 import os
 import shutil
 
@@ -24,7 +23,7 @@ def create_download_package():
                 shutil.copy2(file, temp_dir)
         
         # Kopiere Verzeichnisse
-        for folder in ["autodarts_modules", "data", "resources"]:
+        for folder in ["autodarts_modules", "data"]:
             if os.path.exists(folder):
                 dst_folder = os.path.join(temp_dir, folder)
                 if os.path.exists(dst_folder):

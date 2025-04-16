@@ -1,0 +1,12 @@
+streamlit
+pandas
+plotly
+pygame
+matplotlib
+pillow
+requests
+pyinstaller
+trafilatura
+beautifulsoup4
+streamlit
+streamlit

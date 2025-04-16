@@ -1,24 +1,15 @@
 
 import pygame
+import os
 
-def initialize_sounds():
-    """Initialize the sound system"""
-    pygame.mixer.init()
+class SoundEffects:
+    def __init__(self):
+        pygame.mixer.init()
+        self.sounds = {
+            '26': pygame.mixer.Sound(os.path.join('data', 'sounds', '26.wav')),
+            '180': pygame.mixer.Sound(os.path.join('data', 'sounds', '180.wav'))
+        }
     
-def play_throw_sound(score):
-    """Play sound for special throws"""
-    # Placeholder for sound playing logic
-    pass
-
-def create_sound_settings():
-    """Create sound settings interface"""
-    import streamlit as st
-    
-    st.subheader("Sound-Einstellungen")
-    enabled = st.toggle("Sound aktivieren", value=True)
-    volume = st.slider("Lautstärke", 0, 100, 50)
-    
-    if enabled:
-        st.info("Soundeffekte sind aktiviert")
-    else:
-        st.warning("Soundeffekte sind deaktiviert")
+    def play_sound(self, score):
+        if str(score) in self.sounds:
+            self.sounds[str(score)].play()

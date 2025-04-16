@@ -20,10 +20,8 @@ def create_export_import_interface():
         
         if st.button("Daten exportieren"):
             data = export_data()
-            
             if data:
                 df = pd.DataFrame(data)
-                
                 if export_format == "JSON":
                     export_data = df.to_json(orient="records", date_format="iso")
                     st.download_button(
@@ -52,7 +50,7 @@ def create_export_import_interface():
     
     with col2:
         st.subheader("Import")
-        uploaded_file = st.file_uploader("Datei zum Import auswählen", type=["json", "csv", "xlsx"])
+        uploaded_file = st.file_uploader("Datei auswählen", type=["json", "csv", "xlsx"])
         
         if uploaded_file is not None:
             try:
@@ -60,13 +58,11 @@ def create_export_import_interface():
                     data = pd.read_json(uploaded_file)
                 elif uploaded_file.type == "text/csv":
                     data = pd.read_csv(uploaded_file)
-                else:  # Excel
+                else:
                     data = pd.read_excel(uploaded_file)
                 
                 if st.button("Daten importieren"):
-                    if import_data(data.values.tolist()):
-                        st.success("Daten erfolgreich importiert!")
-                    else:
-                        st.error("Fehler beim Importieren der Daten")
+                    import_data(data.to_dict("records"))
+                    st.success("Daten erfolgreich importiert!")
             except Exception as e:
-                st.error(f"Fehler beim Lesen der Datei: {str(e)}")
+                st.error(f"Fehler beim Import: {str(e)}")

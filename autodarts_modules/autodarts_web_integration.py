@@ -1,4 +1,3 @@
-
 class AutodartsAPI:
     def __init__(self):
         self.current_match = None
@@ -27,7 +26,7 @@ class AutodartsAPI:
             data_str = str(previous_data)
             if "ad-ext-turn-points" in data_str and "css-1lvci65" in data_str:
                 points = data_str.split('css-1lvci65">')[1].split('<')[0]
-                # Extrahiere den Spielernamen aus dem HTML
+                # Extract player name from HTML
                 player_parts = data_str.split('css-0">')
                 if len(player_parts) > 1:
                     player = player_parts[1].split('<')[0]
@@ -37,5 +36,5 @@ class AutodartsAPI:
                             "score": int(points)
                         })
         except Exception as e:
-            print(f"Fehler bei der Wurferkennung: {str(e)}")
+            print(f"Error in throw detection: {str(e)}")
         return special_throws
