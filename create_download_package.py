@@ -1,45 +1,45 @@
 
 import os
-import zipfile
 import shutil
 
 def create_download_package():
     try:
-        # Erstelle dist Ordner falls nicht vorhanden
-        if not os.path.exists("dist"):
-            os.makedirs("dist")
+        # Definiere Pfade
+        dist_dir = "dist"
+        zip_path = os.path.join(dist_dir, "AutodartsStrafenMonitor.zip")
+        temp_dir = os.path.join(dist_dir, "temp")
         
-        # Definiere Zip-Pfad
-        zip_path = "dist/AutodartsStrafenMonitor.zip"
+        # Erstelle Verzeichnisse
+        os.makedirs(dist_dir, exist_ok=True)
+        os.makedirs(temp_dir, exist_ok=True)
         
         # Lösche alte ZIP falls vorhanden
         if os.path.exists(zip_path):
             os.remove(zip_path)
+            
+        # Kopiere Dateien in temp Verzeichnis
+        files_to_copy = ["app.py", "autodarts_launcher.py", "requirements.txt"]
+        for file in files_to_copy:
+            if os.path.exists(file):
+                shutil.copy2(file, temp_dir)
         
-        # Erstelle neue ZIP-Datei
-        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-            # Hauptdateien
-            main_files = ["app.py", "autodarts_launcher.py", "requirements.txt"]
-            for file in main_files:
-                if os.path.exists(file):
-                    zf.write(file, file)
-            
-            # Module
-            for root, _, files in os.walk("autodarts_modules"):
-                for file in files:
-                    file_path = os.path.join(root, file)
-                    zf.write(file_path, file_path)
-            
-            # Daten und Ressourcen
-            for folder in ["data", "resources"]:
-                if os.path.exists(folder):
-                    for root, _, files in os.walk(folder):
-                        for file in files:
-                            file_path = os.path.join(root, file)
-                            zf.write(file_path, file_path)
+        # Kopiere Verzeichnisse
+        for folder in ["autodarts_modules", "data", "resources"]:
+            if os.path.exists(folder):
+                dst_folder = os.path.join(temp_dir, folder)
+                if os.path.exists(dst_folder):
+                    shutil.rmtree(dst_folder)
+                shutil.copytree(folder, dst_folder)
+        
+        # Erstelle ZIP aus temp Verzeichnis
+        shutil.make_archive(os.path.splitext(zip_path)[0], 'zip', temp_dir)
+        
+        # Lösche temp Verzeichnis
+        shutil.rmtree(temp_dir)
         
         print(f"ZIP-Datei erfolgreich erstellt: {zip_path}")
         return True
+        
     except Exception as e:
         print(f"Fehler beim Erstellen der ZIP-Datei: {str(e)}")
         return False
