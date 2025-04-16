@@ -1,9 +1,14 @@
 
+# Wechsle ins Downloads-Verzeichnis
+Set-Location -Path "C:\Users\mielersch\Downloads"
+
 # Erstelle Hauptverzeichnisse
-New-Item -ItemType Directory -Path "autodarts_modules" -Force
-New-Item -ItemType Directory -Path "data" -Force
-New-Item -ItemType Directory -Path "data\player_images" -Force
-New-Item -ItemType Directory -Path "data\sounds" -Force
+New-Item -ItemType Directory -Path "programm" -Force
+New-Item -ItemType Directory -Path "programm\autodarts_modules" -Force
+New-Item -ItemType Directory -Path "programm\data" -Force
+New-Item -ItemType Directory -Path "programm\data\player_images" -Force
+New-Item -ItemType Directory -Path "programm\data\sounds" -Force
+New-Item -ItemType Directory -Path "programm\resources" -Force
 
 # Erstelle Python-Module
 New-Item -ItemType File -Path "autodarts_modules\__init__.py" -Force
