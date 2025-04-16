@@ -1,0 +1,3 @@
+@echo off
+echo Starte Autodarts Strafen-Monitor...
+start "" "AutodartsStrafenMonitor.exe"
