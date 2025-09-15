@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Players" xml:space="preserve">
+    <value>Players</value>
+  </data>
+  <data name="AddPlayer" xml:space="preserve">
+    <value>Add Player</value>
+  </data>
+  <data name="ToggleTheme" xml:space="preserve">
+    <value>Toggle Theme</value>
+  </data>
+  <data name="ToggleLanguage" xml:space="preserve">
+    <value>Toggle Language</value>
+  </data>
+  <data name="Audio" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="CameraStatus" xml:space="preserve">
+    <value>Cameras:</value>
+  </data>
+  <data name="PlayerHeader" xml:space="preserve">
+    <value>Player</value>
+  </data>
+  <data name="ScoreHeader" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="LastThrowsHeader" xml:space="preserve">
+    <value>Last Throws</value>
+  </data>
+  <data name="TurnProgress" xml:space="preserve">
+    <value>Turn</value>
+  </data>
+  <data name="AddDart" xml:space="preserve">
+    <value>Add Dart</value>
+  </data>
+  <data name="ClearTurn" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="NextPlayer" xml:space="preserve">
+    <value>Next Player</value>
+  </data>
+  <data name="ConfirmTurn" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="LadderTarget" xml:space="preserve">
+    <value>Ladder Target</value>
+  </data>
+  <data name="TargetFocus" xml:space="preserve">
+    <value>Target Focus</value>
+  </data>
+  <data name="DoubleRoutine" xml:space="preserve">
+    <value>Double Routine</value>
+  </data>
+  <data name="RecentDarts" xml:space="preserve">
+    <value>Recent Darts</value>
+  </data>
+  <data name="SessionHistory" xml:space="preserve">
+    <value>Session History</value>
+  </data>
+  <data name="TargetFocusRemainingLabel" xml:space="preserve">
+    <value>Remaining darts</value>
+  </data>
+  <data name="ExportJson" xml:space="preserve">
+    <value>Export JSON</value>
+  </data>
+  <data name="ExportCsv" xml:space="preserve">
+    <value>Export CSV</value>
+  </data>
+  <data name="CameraAvailable" xml:space="preserve">
+    <value>Camera available</value>
+  </data>
+  <data name="CameraUnavailable" xml:space="preserve">
+    <value>No camera detected</value>
+  </data>
+  <data name="Mode.Checkout170.Title" xml:space="preserve">
+    <value>170 Checkout</value>
+  </data>
+  <data name="Mode.Checkout170.Description" xml:space="preserve">
+    <value>Fixed 170 checkout with double-out rules. Unlimited darts until a player finishes, then restart at 170.</value>
+  </data>
+  <data name="Mode.Ladder123.Title" xml:space="preserve">
+    <value>123 Ladder</value>
+  </data>
+  <data name="Mode.Ladder123.Description" xml:space="preserve">
+    <value>Start at 123 points and climb one point per successful double-out within nine darts. Failure at 124+ drops one point.</value>
+  </data>
+  <data name="Mode.TargetFocus.Title" xml:space="preserve">
+    <value>Target Focus</value>
+  </data>
+  <data name="Mode.TargetFocus.Description" xml:space="preserve">
+    <value>Practice 30 darts on a selected segment (20-17). Tracks hits and remaining throws.</value>
+  </data>
+  <data name="Mode.DoubleRoutine.Title" xml:space="preserve">
+    <value>Double Finish Routine</value>
+  </data>
+  <data name="Mode.DoubleRoutine.Description" xml:space="preserve">
+    <value>Checkout drills on custom double targets (D16, D8, D4, D2, D1).</value>
+  </data>
+  <data name="Mode.FiftyThree.Title" xml:space="preserve">
+    <value>53 Checkout</value>
+  </data>
+  <data name="Mode.FiftyThree.Description" xml:space="preserve">
+    <value>Play from 53 points aiming to finish on a double. Score manually or via camera tracking.</value>
+  </data>
+</root>
